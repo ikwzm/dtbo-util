@@ -7,7 +7,7 @@ __version__='0.2'
 __license__='BSD-2-Clause'
 __author__='ikwzm'
 __author_email__='ichiro_k@ca2.so-net.ne.jp'
-__url__='https://github.com/ikwzm/dtboctl'
+__url__='https://github.com/ikwzm/dtbo-utils'
 
 set -e
 set -o pipefail
