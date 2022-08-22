@@ -1,7 +1,11 @@
-dtbo-util - Device Tree Blob Overlay Utility Programs
+dtbo-utils - Device Tree Blob Overlay Utility Programs
 ======================================================
 
 ## dtbo-config
+
+```dtbo-config``` is a POSIX shell script for creating or removing overlays in the linux device tree.
+
+### Usage
 
 ```console
 shell$ ./dtbo-config --help
@@ -35,5 +39,16 @@ VARIABLES
         DTB                Device Tree Overlay Blob File
         DT_DT_OVERLAY_NAME Device Tree Overlay Name
         CONFIG_DTBO_PATH   Device Tree Overlay Configuration Path
-                           Default='/sys/kernel/config/device-tree/overlays/'
+                           Default='/sys/kernel/config/device-tree/overlays/'```
 ```
+
+### Example
+
+```console
+shell$ dtbo-config --install argsort --dts argsort_16_2_2_5.10.dts
+```
+
+```console
+shell$ dtbo-config --remove argsort
+```
+
