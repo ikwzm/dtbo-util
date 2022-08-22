@@ -93,7 +93,7 @@ dtbo_create()
 dtbo_remove()
 {
     check_config_dtbo_path
-    run_command "rm -r $CONFIG_DTBO_PATH/$1"
+    run_command "rmdir $CONFIG_DTBO_PATH/$1"
 }
 
 dtbo_load_dts()
