@@ -30,10 +30,10 @@ fi
 do_help()
 {
     echo "NAME"
-    echo "     ${script_name} - Device Tree Overlay Configure"
+    echo "     $script_name - Device Tree Overlay Configure"
     echo ""
     echo "SYNOPSYS"
-    echo "     ${script_name} [<options>] DT_OVERLAY_NAME"
+    echo "     $script_name [<options>] DT_OVERLAY_NAME"
     echo ""
     echo "DESCRIPTION"
     echo "     Device Tree Overlay Configure"
@@ -59,17 +59,17 @@ do_help()
     echo "        DTB                Device Tree Overlay Blob File"
     echo "        DT_DT_OVERLAY_NAME Device Tree Overlay Name"
     echo "        CONFIG_DTBO_PATH   Device Tree Overlay Configuration Path"
-    echo "                           Default='${CONFIG_DTBO_PATH}'"
+    echo "                           Default='$CONFIG_DTBO_PATH'"
 }
 
 check_config_dtbo_path()
 {
     if [[   -z $CONFIG_DTBO_PATH ]]; then
-	echo "${script_name}: CONFIG_DTBO_PATH not specified"
+	echo "$script_name: CONFIG_DTBO_PATH not specified"
 	exit 1
     fi
     if [[ ! -d $CONFIG_DTBO_PATH ]]; then
-	echo "${script_name}: ${CONFIG_DTBO_PATH} sepcified in CONFIG_DTBO_PATH does not exist"
+	echo "$script_name: $CONFIG_DTBO_PATH sepcified in CONFIG_DTBO_PATH does not exist"
 	exit 1
     fi
 }
@@ -88,31 +88,31 @@ run_command()
 dtbo_create()
 {
     check_config_dtbo_path
-    run_command "mkdir ${CONFIG_DTBO_PATH}/$1"
+    run_command "mkdir $CONFIG_DTBO_PATH/$1"
 }
 
 dtbo_remove()
 {
     check_config_dtbo_path
-    run_command "rm -r ${CONFIG_DTBO_PATH}/$1"
+    run_command "rm -r $CONFIG_DTBO_PATH/$1"
 }
 
 dtbo_load_dts()
 {
     check_config_dtbo_path
-    run_command "cat $2 | dtc -@ -I dts -O dtb > ${CONFIG_DTBO_PATH}/$1/dtbo"
+    run_command "cat $2 | dtc -@ -I dts -O dtb > $CONFIG_DTBO_PATH/$1/dtbo"
 }
 
 dtbo_load_dtb()
 {
     check_config_dtbo_path
-    run_command "cat $2 > ${CONFIG_DTBO_PATH}/$1/dtbo"
+    run_command "cat $2 > $CONFIG_DTBO_PATH/$1/dtbo"
 }
 
 do_load()
 {
     if [[ $verbose -gt 0 ]] || [[ $debug_level -gt 0 ]]; then
-	echo "## ${script_name}: load $1 $2 $3"
+	echo "## $script_name: load $1 $2 $3"
     fi
     if [[ $2 == "dts" ]]; then
 	dtbo_load_dts $1 $3
@@ -125,7 +125,7 @@ do_load()
 do_create()
 {
     if [[ $verbose -gt 0 ]] || [[ $debug_level -gt 0 ]]; then
-	echo "## ${script_name}: create $1"
+	echo "## $script_name: create $1"
     fi
     dtbo_create $1
 }
@@ -133,7 +133,7 @@ do_create()
 do_remove()
 {
     if [[ $verbose -gt 0 ]] || [[ $debug_level -gt 0 ]]; then
-	echo "## ${script_name}: remove $1"
+	echo "## $script_name: remove $1"
     fi
     dtbo_remove $1
 }
@@ -141,7 +141,7 @@ do_remove()
 do_install()
 {
     if [[ $verbose -gt 0 ]] || [[ $debug_level -gt 0 ]]; then
-	echo "## ${script_name}: install $1 $2 $3"
+	echo "## $script_name: install $1 $2 $3"
     fi
     dtbo_create $1
     if [[ $2 == "dts" ]]; then
@@ -211,18 +211,18 @@ done
 
 if [[ $need_name -gt 0 ]]; then
     if [[ -z $DT_OVERLAY_NAME ]]; then
-        echo "${script_name}: Please specify DT_OVERLAY_NAME. see '${script_name} --help'."
+        echo "$script_name: Please specify DT_OVERLAY_NAME. see '$script_name --help'."
         exit 1
     fi
 fi
 
 if [[ $need_dtb -gt 0 ]]; then
     if [[   -z $DTS ]] && [[   -z $DTB ]]; then
-        echo "${script_name}: Please specify either DTS or DTB. see '${script_name} --help'."
+        echo "$script_name: Please specify either DTS or DTB. see '$script_name --help'."
         exit 1
     fi
     if [[ ! -z $DTS ]] && [[ ! -z $DTB ]]; then
-        echo "${script_name}: Please specify only one of DTS or DTB. see '${script_name} --help'."
+        echo "$script_name: Please specify only one of DTS or DTB. see '$script_name --help'."
         exit 1
     fi
     if [[ ! -z $DTS ]]; then
