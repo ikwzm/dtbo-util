@@ -1,19 +1,27 @@
 dtbo-utils - Device Tree Blob Overlay Utility Programs
 ======================================================
 
-## dtbo-config
+# Overview
+
+This repository provides utility tools for device tree overlays.
+The following two utility tools are provided here.
+
+ * dtbo-config  - shell script for creating or removing overlays in the linux device tree.
+ * dtbo-compile - shell script for generating dtbo(device tree blob overlay).
+
+# dtbo-config
 
 ```dtbo-config``` is a POSIX shell script for creating or removing overlays in the linux device tree.
 
-### Usage
+## Usage
 
 ```console
-shell$ ./dtbo-config --help
+shell$ dtbo-config --help
 NAME
-     ./dtbo-config - Device Tree Overlay Configure
+     dtbo-config - Device Tree Overlay Configure
 
 SYNOPSYS
-     ./dtbo-config [<options>] DT_OVERLAY_NAME
+     dtbo-config [<options>] DT_OVERLAY_NAME
 
 DESCRIPTION
      Device Tree Overlay Configure
@@ -42,7 +50,7 @@ VARIABLES
                            Default='/sys/kernel/config/device-tree/overlays/'```
 ```
 
-### Example
+## Example
 
 ```console
 shell$ dtbo-config --install argsort --dts argsort_16_2_2_5.10.dts
@@ -50,5 +58,78 @@ shell$ dtbo-config --install argsort --dts argsort_16_2_2_5.10.dts
 
 ```console
 shell$ dtbo-config --remove argsort
+```
+
+# dtbo-compile
+
+```dtbo-compile``` is a Bourne-Again shell script for generating dtbo(device tree blob overlay).
+
+## Usage
+
+```console
+shell$ dtbo-compile --help
+NAME
+     dtbo-compile - Device Tree Overlay Compiler
+
+SYNOPSYS
+     dtbo-compile [<options>] DTS...
+
+DESCRIPTION
+     Device Tree Overlay Compiler
+
+OPTIONS
+        -h, --help         Run Help    command
+        -v, --verbose      Turn on verbosity
+        -n, --dry-run      Don't actually run any command
+        -P, --preprocess   Preprocess only; do not run DTC
+        -k, --kernel <arg> Linux kernel source directory
+        -K                 Linux kernel source directory is the current system
+  GCC PreProcessor Options
+        -i* args           This option is passed to gcc preprocessor
+        -I*                This option is passed to gcc preprocessor
+        -D*                This option is passed to gcc preprocessor
+        -U*                This option is passed to gcc preprocessor
+  DTC(Device Tree Compiler) Options
+        -q, --quiet                
+              Quiet: -q suppress warnings, -qq errors, -qqq all
+        -o, --out <arg>            
+              Output file
+        -O, --out-format <arg>
+              Output formats are:
+              dts - device tree source text
+              dtb - device tree blob
+              asm - assembler source
+        -d, --out-dependency <arg> Output dependency file
+        -R, --reserve <arg>        
+              Make space for <number> reserve map entries (for dtb and asm output)
+        -S, --space <arg>          
+              Make the blob at least <bytes> long (extra space)
+        -p, --pad <arg>            
+              Add padding to the blob of <bytes> long (extra space)
+        -a, --align <arg>          
+              Make the blob align to the <bytes> (extra space)
+        -b, --boot-cpu <arg>       
+              Set the physical boot cpu
+        -f, --force                
+              Try to produce output even if the input tree has errors
+        -i, --include <arg>        
+              Add a path to search for include files
+        -s, --sort                 
+              Sort nodes and properties before outputting (useful for comparing trees)
+        -H, --phandle <arg>        
+              Valid phandle formats are:
+                      legacy - 'linux,phandle' properties only
+                      epapr  - 'phandle' properties only
+                      both   - Both 'linux,phandle' and 'phandle' properties
+        -W, --warning <arg>        
+              Enable/disable warnings (prefix with no-)
+        -E, --error <arg>          
+              Enable/disable errors (prefix with no-)
+        -A, --auto-alias           
+              Enable auto-alias of labels
+
+VARIABLES
+        DTS                      Device Tree Overlay Source File
+        LINUX_KERNEL_SOURCE_PATH Linux kernel source directory
 ```
 
