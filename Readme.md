@@ -18,10 +18,10 @@ The following two utility tools are provided here.
 ```console
 shell$ dtbo-config --help
 NAME
-     dtbo-config - Device Tree Overlay Configure
+     ./dtbo-config - Device Tree Overlay Configure
 
 SYNOPSYS
-     dtbo-config [<options>] DT_OVERLAY_NAME
+     ./dtbo-config [<options>] DT_OVERLAY_NAME
 
 DESCRIPTION
      Device Tree Overlay Configure
@@ -29,13 +29,17 @@ DESCRIPTION
         Remove : Remove Device Tree Overlay Directory
         Load   : Load to Device Tree Overlay Directory
         Install: Create and Load
+        List   : Print List of Device Tree Overlay Directory
+        Status : Print Status of Device Tree Overlay Directory
 
 OPTIONS
         -h, --help         Run Help    command
         -c, --create       Run Create  command
         -r, --remove       Run Remove  command
-        -l, --load         Run Load    comand
+        -l, --load         Run Load    command
         -i, --install      Run Install command
+        -t, --list         Run List    command
+        -s, --status       Run Status  command
         -v, --verbose      Turn on verbosity
         -d, --debug        Turn on debug
         -n, --dry-run      Don't actually run any command
@@ -45,9 +49,9 @@ OPTIONS
 VARIABLES
         DTS                Device Tree Overlay Source File
         DTB                Device Tree Overlay Blob File
-        DT_DT_OVERLAY_NAME Device Tree Overlay Name
+        DT_OVERLAY_NAME    Device Tree Overlay Name
         CONFIG_DTBO_PATH   Device Tree Overlay Configuration Path
-                           Default='/sys/kernel/config/device-tree/overlays/'```
+                           Default='/config/device-tree/overlays/'
 ```
 
 ## Example
