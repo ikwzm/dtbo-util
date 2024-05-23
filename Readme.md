@@ -43,8 +43,8 @@ OPTIONS
         -v, --verbose      Turn on verbosity
         -d, --debug        Turn on debug
         -n, --dry-run      Don't actually run any command
-        --dts DTS          Device Tree Overlay Source File
-        --dtb DTB          Device Tree Overlay Blob File
+        --dts DTS          Specify Device Tree Overlay Source File
+        --dtb DTB          Specify Device Tree Overlay Blob File
 
 VARIABLES
         DTS                Device Tree Overlay Source File
