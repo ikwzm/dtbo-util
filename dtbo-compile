@@ -2,8 +2,8 @@
 #
 # Simple script for device tree overlay compiler.
 #
-__copyright__='Copyright (C) 2022 ikwzm'
-__version__='0.2'
+__copyright__='Copyright (C) 2022-2024 ikwzm'
+__version__='0.3'
 __license__='BSD-2-Clause'
 __author__='ikwzm'
 __author_email__='ichiro_k@ca2.so-net.ne.jp'
@@ -16,7 +16,7 @@ script_name=$0
 verbose=0
 dry_run=0
 gcc_command="gcc"
-gcc_options="-E -P -x assembler-with-cpp"
+gcc_options="-E -P -x assembler-with-cpp -nostdinc -undef -D__DTS__"
 gcc_run=0
 dtc_command="dtc"
 dtc_options="-I dts --symbol"
